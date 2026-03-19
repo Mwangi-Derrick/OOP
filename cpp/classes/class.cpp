@@ -39,3 +39,30 @@ void displayDetails(){
 };
 
 };
+
+int addr;
+// void fetchpass(Passenger P){
+// P.getId();
+// };
+
+int fetchpass(Passenger& P){
+   int addr = P.getId();
+   return addr;
+};
+
+// void fetchpass(Passenger* P){
+//     P->setID(20);
+// };
+
+
+Passenger createPassenger(){
+    Passenger P(1 , "John", "gmail.com");
+    return P;
+};
+
+int main(){
+Passenger pass1 = createPassenger();
+int value = fetchpass(pass1);
+cout << "value:" << value;
+return 0;
+};
