@@ -56,13 +56,14 @@ int fetchpass(Passenger& P){
 
 
 Passenger createPassenger(){
-    Passenger P(1 , "John", "gmail.com");
+    Passenger P(1 , " John", " gmail.com");
     return P;
 };
 
 int main(){
 Passenger pass1 = createPassenger();
 int value = fetchpass(pass1);
-cout << "value:" << value;
+cout << "value: " << value << "\n\n";
+pass1.displayDetails();
 return 0;
 };
