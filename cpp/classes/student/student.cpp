@@ -42,8 +42,10 @@ class Student{
             else{
                 grade = "F";
             }
-        }
-        
+          }
+       int getMarks() {
+        return marks;
+       };
         void displayStudentDetails(){
             cout << "\nStudent Details:" << endl;
             cout << "Registration Number: " << regNo << endl;
@@ -76,11 +78,16 @@ int main(){
         
         students[i] = Student(reg, name, marks);
     }
-    
+    // During the display loop, track the maximum
+    int maxMarks = -1;
     // Display all students
     cout << "\n=== All Student Records ===" << endl;
     for (i = 0; i < number; i++){
         students[i].displayStudentDetails();
+        // Track largest while displaying
+    if (students[i].getMarks() > maxMarks) {
+        maxMarks = students[i].getMarks();
+    }
     }
     
     // Free allocated memory
