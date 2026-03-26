@@ -60,7 +60,7 @@ int main(){
     cin >> number;
     
     // Create array of Student objects
-    Student* students = new Student[number];
+    Student *students = new Student[number];
     
     for (i = 0; i < number; i++){
         string reg, name;
