@@ -40,11 +40,14 @@ class Payment{
 
 class CardPayment:public Payment{
     protected:
-    int h;//specific to the triangle child class
+    int amount;//specific to the triangle child class
     //methods
     public:
     //constructor method
-   CardPayment(int x, int y):
+   CardPayment(int am):
+   Payment(am){
+    amount = am;
+   }
 
    void makePayment() override{
     cout<< "making Card Payment"<< endl;
@@ -62,7 +65,7 @@ int main(){
 
    
     //base pointer (makes manipulation of larger data easier)
-    payment = new CardPayment(100)
+    Payment *p = new CardPayment(100);
 
     return 0;
 }

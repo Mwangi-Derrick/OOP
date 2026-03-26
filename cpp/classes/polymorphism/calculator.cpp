@@ -26,7 +26,7 @@ int main(){
     Calculator c1;
     //static binding and dynamic binding
     c1.add(3,4);
-    c1.add(3.5,3.8);
+    c1.add(3.5,5.8);
     c1.add(3,4,5);
     return 0;
 }
