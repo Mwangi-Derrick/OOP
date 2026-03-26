@@ -69,6 +69,23 @@ class Rectangle:public Shape{
 };
 
 
+class Circle:public Shape{
+    protected:
+    int r;//specific to the triangle child class
+    //methods
+    public:
+    //constructor method
+   Circle(int x, int y, int _r ):
+   Shape(x,y){
+     r = _r;
+   }
+   void draw() override{
+    cout<< "Draw Circle"<< endl;
+   };
+
+};
+
+
 /*
 base class pointer..pointer whose type is the base class
 [x,y,h] derived Base
@@ -90,9 +107,14 @@ int main(){
     Shape *s2 = new Rectangle(9, 10, 3, 5);
     s2->draw();
     s2->printInto();
+
+    Shape *s3 = new Circle(3,5,8);
+    s3->draw();
+    s3->printInto();
     //remove the memory
     delete s1;
     delete s2; 
+    delete s3;
     
     // Triangle *p = &t;
     // Shape *p = new;
