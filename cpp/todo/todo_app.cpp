@@ -5,6 +5,7 @@
 #include <iostream>
 #include <limits>
 #include <string>
+#include <stack>
 
 class Todo {
 private:
@@ -27,6 +28,8 @@ class TodoManager {
 private:
     std::deque<Todo> todos;          // FIFO: push_back, pop_front
     std::deque<Todo> completedTodos; // Optional history
+    //
+    std::stack<Todo> deletedTodos;
 
     static bool isBlank(const std::string& s) {
         for (unsigned char ch : s) {
@@ -53,13 +56,30 @@ public:
             std::cout << "No todos to delete! The queue is empty.\n";
             return;
         }
-
+   
         Todo deletedTodo = std::move(todos.front());
+        // push the deleted todo to a stack to enable undo delete functionality
+        deletedTodos.push(deletedTodo);
         todos.pop_front();
         completedTodos.push_back(deletedTodo);
 
         std::cout << "Deleted todo: ";
         deletedTodo.display();
+
+
+    }
+
+    void undoDelete(int id){
+        //check if the stack is empty
+        //if the stack is occupied push the LIFO to the end of the todos queue
+        if(!deletedTodos.empty()){
+            Todo deletedTodo = std::move(deletedTodos.top());
+            //remove the todo from stack
+            deletedTodos.pop();
+            //we use push back to add the deleted to the end of the queue
+            todos.push_back(deletedTodo);
+            completedTodos.push_back(deletedTodo);
+        }
     }
 
     void deleteSpecificTodo(int id) {
